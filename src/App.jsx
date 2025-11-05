@@ -1,12 +1,25 @@
-//use
-// primary:#FF6600;
-// secondary:#1A1A1A;
-// background:#F1F1F1;
-// like one in the example
+
+import { useState } from "react";
+import { Login } from "./pages/Login"
+import { Signup } from "./pages/Signup";
 function App() {
 
+  const [isSigningUp, setIsSigningUp] = useState(false);
+
+  const toggleAuthMode = () => {
+    setIsSigningUp(!isSigningUp);
+  };
+
   return (
-   <div className="bg-background text-secondary border-primary border-2">APP</div>
-  )
+    <div className="font-sans">
+
+      {isSigningUp ? (
+        <Signup onToggle={toggleAuthMode} />
+      ) : (
+        <Login onToggle={toggleAuthMode} />
+      )}
+
+    </div>
+  );
 }
 export default App
