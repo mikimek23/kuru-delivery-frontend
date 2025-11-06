@@ -1,24 +1,21 @@
 
-import { useState } from "react";
-import { Login } from "./pages/Login"
-import { Signup } from "./pages/Signup";
+//import { useState } from "react";
+//import { Login } from "./pages/Login"
+//import { Signup } from "./pages/Signup";
+import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { AdminLogin } from "./pages/admin/AdminLogin";
+import { AuthSwitch } from "./components/auth/AuthSwitch";
 function App() {
-
-  const [isSigningUp, setIsSigningUp] = useState(false);
-
-  const toggleAuthMode = () => {
-    setIsSigningUp(!isSigningUp);
-  };
 
   return (
     <div className="font-sans">
 
-      {isSigningUp ? (
-        <Signup onToggle={toggleAuthMode} />
-      ) : (
-        <Login onToggle={toggleAuthMode} />
-      )}
-
+      <AuthSwitch/>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/adminlogin" element={<AdminLogin/>}></Route>
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }

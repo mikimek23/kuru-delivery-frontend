@@ -16,6 +16,7 @@ export const AuthForm = ({ id,value,onChange, name, type, label, placeholder, ic
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        required
         className="block w-full pl-10 pr-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
       />
     </div>
