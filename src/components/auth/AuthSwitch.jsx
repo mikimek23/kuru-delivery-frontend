@@ -1,17 +1,19 @@
-import { useState } from "react";
-import {Signup} from '../../pages/Signup'
-import {Login} from '../../pages/Login'
-export const AuthSwitch = () => {
-  // This is the state logic you asked for!
-  const [isSigningUp, setIsSigningUp] = useState(false);
+import React, { useCallback, useState } from "react";
+import { Signup } from '../../pages/Signup';
+import { Login } from '../../pages/Login';
 
-  const toggleAuthMode = () => {
-    setIsSigningUp(prev => !prev);
-  };
+
+export const AuthSwitch = ({ defaultSigningUp = false }) => {
+  const [isSigningUp, setIsSigningUp] = useState(() => Boolean(defaultSigningUp));
+
+  // stable toggle handler
+  const toggleAuthMode = useCallback(() => {
+    setIsSigningUp((prev) => !prev);
+  }, []);
 
   return (
-    // This is where the conditional rendering happens.
-    <div className="min-h-screen">
+    // announce view changes to assistive tech
+    <div className="min-h-screen" role="region" aria-live="polite" aria-atomic="true">
       {isSigningUp ? (
         <Signup onToggle={toggleAuthMode} />
       ) : (

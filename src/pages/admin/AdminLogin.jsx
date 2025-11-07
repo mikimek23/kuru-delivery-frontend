@@ -3,22 +3,39 @@ import {AuthForm} from '../../components/auth/AuthForm'
 import { ArrowRightIcon, LockIcon, LogoIcon, MailIcon } from '../../components/auth/SvgIcons';
 import { StatBox } from '../../components/auth/StatBox';
 import {  ChartBarIcon } from 'lucide-react';
+import { useAuth } from '../../hooks/useAuth.js';
+import { useNavigate } from 'react-router-dom';
+
 export const AdminLogin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const { login, isLoading } = useAuth();
+  const navigate = useNavigate();
 
-  
   const handleAdminSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
+
     if (username === 'admin@kuru.com' && password === 'dashboard123') {
-      console.log('Admin Logged in successfully!');
       
-      setError('Success! Redirecting to Dashboard...');
+      const result = await login({ email: 'test@kuru.com', role: 'admin' });
+      if (result && result.success) {
+       
+        navigate('/admin');
+      } else {
+        setError(result.message || 'Failed to sign in via auth provider.');
+      }
+      return;
+    }
+
+
+    const result = await login({ email: username.trim() });
+    if (result && result.success) {
+      navigate('/');
     } else {
-      setError('Invalid Administrator Credentials.');
+      setError(result.message || 'Invalid credentials.');
     }
   };
 
@@ -90,9 +107,11 @@ export const AdminLogin = () => {
 
               <button
                 type="submit"
-                className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-md text-base font-medium text-white bg-linear-to-r from-orange-500 to-red-600 transition duration-300 ease-in-out hover:from-orange-600 hover:to-red-700 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+                disabled={isLoading}
+                className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-md text-base font-medium text-white bg-linear-to-r from-orange-500 to-red-600 transition duration-300 ease-in-out hover:from-orange-600 hover:to-red-700 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Access Dashboard <ArrowRightIcon className="w-5 h-5 ml-2" />
+                {isLoading ? 'Accessing...' : 'Access Dashboard'}
+                <ArrowRightIcon className="w-5 h-5 ml-2" />
               </button>
             </form>
           </div>
