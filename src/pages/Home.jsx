@@ -10,7 +10,7 @@ import { ArrowRightIcon } from '../components/auth/SvgIcons'
 export const Home = () => {
   return (
     <div className='border min-h-screen bg-orange-50'>
-       <Navbar />
+      
        <HeroSection />
        {/** Other homepage sections can be added here **/}
        <div className="flex-1 text-center md:text-center mt-4 min-h-1/2 px-4 sm:px-6 lg:px-8 py-12 bg-orange-50">
@@ -60,7 +60,7 @@ export const Home = () => {
           
         </div>
                 </div>
-       <Footer />
+       
     </div>
   )
 }
