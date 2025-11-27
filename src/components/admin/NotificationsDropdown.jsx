@@ -7,7 +7,7 @@ export const NotificationsDropdown=({ onClose })=>{
       className="absolute right-0 mt-2 w-72 bg-white shadow-lg rounded-lg border border-gray-200 
       animate-dropdown z-50"
     >
-      {/* Header */}
+     
       <div className="flex items-center justify-between p-3 border-b">
         <h3 className="text-sm font-semibold">Notifications</h3>
         <button onClick={onClose}>
@@ -15,7 +15,7 @@ export const NotificationsDropdown=({ onClose })=>{
         </button>
       </div>
 
-      {/* Notification list */}
+     
       <div className="max-h-64 overflow-y-auto p-2">
         {[1, 2, 3].map((n) => (
           <div
@@ -31,7 +31,7 @@ export const NotificationsDropdown=({ onClose })=>{
         ))}
       </div>
 
-      {/* Footer */}
+      
       <div className="p-3 border-t text-center text-sm text-primary cursor-pointer hover:underline">
         View all
       </div>

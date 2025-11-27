@@ -34,7 +34,7 @@ export  const mockUsers= [
   },
 ]
 
-
+/* +++++++++++++order data++++++++++++++++++++ */
 export const orders = [
     {
     id: "ORD-1001",
@@ -109,3 +109,96 @@ export const orders = [
     date: "2025-02-02",
   },
   ];
+  /*+++++++++++++++++++++++++++++ Payment data ++++++++++++++++++ */
+  export const paymentData = [
+  {
+    transactionId: "TXN-873421",
+    customerName: "Selam T.",
+    orderId: "ORD-20231",
+    amountPaid: 320,
+    paymentMethod: "Card",
+    status: "Success",
+    date: "2025-02-18 14:22",
+  },
+  {
+    transactionId: "TXN-873422",
+    customerName: "Miki A.",
+    orderId: "ORD-20232",
+    amountPaid: 150,
+    paymentMethod: "Cash",
+    status: "Pending",
+    date: "2025-02-18 15:10",
+  },
+  {
+    transactionId: "TXN-873423",
+    customerName: "Abel K.",
+    orderId: "ORD-20233",
+    amountPaid: 480,
+    paymentMethod: "Online",
+    status: "Failed",
+    date: "2025-02-17 11:48",
+  },
+  {
+    transactionId: "TXN-873424",
+    customerName: "Aman D.",
+    orderId: "ORD-20234",
+    amountPaid: 210,
+    paymentMethod: "Wallet",
+    status: "Success",
+    date: "2025-02-17 10:05",
+  },
+  {
+    transactionId: "TXN-873425",
+    customerName: "Sara M.",
+    orderId: "ORD-20235",
+    amountPaid: 275,
+    paymentMethod: "Card",
+    status: "Refunded",
+    date: "2025-02-16 18:22",
+  },
+  {
+    transactionId: "TXN-873426",
+    customerName: "Nahom G.",
+    orderId: "ORD-20236",
+    amountPaid: 90,
+    paymentMethod: "Cash",
+    status: "Success",
+    date: "2025-02-16 12:30",
+  },
+  {
+    transactionId: "TXN-873427",
+    customerName: "Martha S.",
+    orderId: "ORD-20237",
+    amountPaid: 560,
+    paymentMethod: "Card",
+    status: "Success",
+    date: "2025-02-15 09:55",
+  },
+  {
+    transactionId: "TXN-873428",
+    customerName: "Henok Y.",
+    orderId: "ORD-20238",
+    amountPaid: 300,
+    paymentMethod: "Online",
+    status: "Pending",
+    date: "2025-02-15 16:41",
+  },
+  {
+    transactionId: "TXN-873429",
+    customerName: "Ruth N.",
+    orderId: "ORD-20239",
+    amountPaid: 415,
+    paymentMethod: "Wallet",
+    status: "Success",
+    date: "2025-02-14 14:18",
+  },
+  {
+    transactionId: "TXN-873430",
+    customerName: "Kaleb W.",
+    orderId: "ORD-20240",
+    amountPaid: 130,
+    paymentMethod: "Card",
+    status: "Failed",
+    date: "2025-02-14 08:30",
+  },
+];

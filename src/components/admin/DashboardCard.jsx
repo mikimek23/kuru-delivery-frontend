@@ -4,7 +4,7 @@ import React from "react";
 export const DashboardCard=({ title, value, icon: Icon, trend })=> {
   return (
     <div className="p-5 bg-white shadow-sm rounded-xl border border-gray-100 flex items-center gap-4">
-      {/* Icon */}
+      
       <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
         {Icon && <Icon size={24} />}
       </div>

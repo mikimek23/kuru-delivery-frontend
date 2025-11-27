@@ -7,13 +7,13 @@ export const Orders = () => {
   
   return (
     <div className='W-fit ml-16'>
-      {/* Page Title */}
+     
       <div className="mb-6">
         <h1 className="text-2xl font-semibold text-gray-800">Orders</h1>
         <p className="text-gray-500 text-sm">Manage and track customer orders.</p>
       </div>
 
-      {/* Top Summary Cards */}
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         <div className="bg-white p-4 rounded-lg shadow-sm border">
           <p className="text-gray-500 text-sm">Total Orders</p>
@@ -36,7 +36,7 @@ export const Orders = () => {
         </div>
       </div>
 
-      {/* Filters */}
+    
       <div className="bg-white p-4 rounded-lg shadow-sm border mb-6 flex flex-col md:flex-row gap-4">
         <input
           type="text"
@@ -58,7 +58,7 @@ export const Orders = () => {
         </select>
       </div>
 
-      {/* Orders Table */}
+      
       <OrdersTable orders={orders} />
     </div>
   );

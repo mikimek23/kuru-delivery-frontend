@@ -1,18 +1,27 @@
 import React from "react";
 import {DashboardCard} from "../../components/admin/DashboardCard";
 import {OrdersTable} from "../../components/admin/OrdersTable";
-import {AnalyticsChart} from "../../components/admin/AnalyticsChart";
+import { OrdersOverAll} from "../../components/admin/AnalyticsChart";
 
 import { Package, DollarSign, Users, Activity } from "lucide-react";
 import { orders } from "../../data/mockdata";
 
+const ordersOverTime = [
+  { date: "Mon", orders: 120 },
+  { date: "Tue", orders: 180 },
+  { date: "Wed", orders: 150 },
+  { date: "Thu", orders: 200 },
+  { date: "Fri", orders: 260 },
+  { date: "Sat", orders: 220 },
+  { date: "Sun", orders: 170 },
+];
 
 export const Dashboard=()=> {
 
   return (
     <div className="p-4 md:p-6 space-y-6">
 
-      {/* Top Stats */}
+     
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
         <DashboardCard
           title="Total Packages"
@@ -43,10 +52,10 @@ export const Dashboard=()=> {
         />
       </div>
 
-      {/* Analytics Chart */}
-      <AnalyticsChart />
+      
+      <OrdersOverAll ordersOverTime={ordersOverTime}/>
 
-      {/* Latest Orders */}
+      
       <div className="mt-6">
         <h2 className="text-lg font-semibold mb-3">Recent Orders</h2>
         <OrdersTable orders={orders} />

@@ -1,6 +1,7 @@
 import React from 'react'
 
-export const UserTable = (users) => {
+export const UserTable = ({ users = [] }) => {
+  const usersArray = Array.isArray(users) ? users : (users && typeof users === 'object' ? Object.values(users) : []);
   
   return (
     
@@ -19,14 +20,14 @@ export const UserTable = (users) => {
         </thead>
 
         <tbody>
-          {users.map((user) => (
+          {usersArray.map((user) => (
             <tr key={user.id} className="border-b hover:bg-gray-50">
               <td className="p-3">{user.id}</td>
               <td className="p-3">{user.name}</td>
               <td className="p-3">{user.email}</td>
               <td className="p-3">{user.phone}</td>
 
-              {/* Role Badge */}
+              
               <td className="p-3">
                 <span
                   className={`px-2 py-1 rounded text-xs font-medium ${
@@ -41,7 +42,7 @@ export const UserTable = (users) => {
                 </span>
               </td>
 
-              {/* Status */}
+              
               <td className="p-3">
                 <span
                   className={`px-2 py-1 rounded text-xs font-medium ${
@@ -54,7 +55,7 @@ export const UserTable = (users) => {
                 </span>
               </td>
 
-              {/* Actions */}
+              
               <td className="p-3 text-center space-x-2">
                 <button className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-md hover:bg-indigo-200">
                   View
