@@ -1,4 +1,4 @@
-// src/layouts/AdminLayout.jsx
+
 import React, { useState } from "react";
 
 import {AdminHeader} from "../components/admin/AdminHeader";
@@ -10,15 +10,15 @@ export const AdminLayout =() => {
 
   return ( 
     <div className="min-h-screen  bg-gray-50 flex flex-1   ">
-      {/* Sidebar (desktop + mobile) */}
+      
       
      <Sidebar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} className=' fixed'/>
 
-      {/* Main content area */}
+      
       <div className="flex-1 flex flex-col">
         <AdminHeader onMobileMenu={() => setMobileOpen(true)} />
 
-        <main className="min-h-screen py-4 md:p-10 overflow-auto shadow-lg m-1 w-screen">
+        <main className="text-center md:text-center mt-4 min-h-1/2 px-4 sm:px-6 lg:px-8 py-1">
           <Outlet/>
         </main>
       </div>

@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import {
-  ArrowRightIcon,BoxIcon,BuildingIcon,CheckIcon,GitHubIcon,GoogleIcon,LockIcon,LogoIcon,MailIcon,UserIcon,
+  ArrowRightIcon,BoxIcon,CheckIcon,GitHubIcon,GoogleIcon,LockIcon,LogoIcon,MailIcon,UserIcon,
 } from '../components/auth/SvgIcons.jsx'; 
 import { SocialButton } from '../components/auth/SocialButton.jsx'; 
 import { AuthForm } from '../components/auth/AuthForm.jsx'; 
 import { useAuth } from '../hooks/useAuth.js'; 
+import { Home, Phone } from 'lucide-react';
 
 export const Signup = ({ onToggle }) => {
   const { signup, isLoading } = useAuth();
 
  
-  const [fullName, setFullName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastname] = useState('');
   const [email, setEmail] = useState('');
-  const [companyName, setCompanyName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [agreed, setAgreed] = useState(false);
   const [error, setError] = useState('');
 
@@ -23,14 +25,11 @@ export const Signup = ({ onToggle }) => {
     setError('');
 
     
-    if (!fullName || !email || !password || !confirmPassword) {
+    if (!firstName||!lastName || !email||!phone|| !address || !password ) {
       setError('Please fill out all required fields.');
       return;
     }
-    if (password !== confirmPassword) {
-      setError('Passwords do not match.');
-      return;
-    }
+    
     if (password.length < 8) {
       setError('Password must be at least 8 characters long.');
       return;
@@ -41,16 +40,18 @@ export const Signup = ({ onToggle }) => {
     }
 
     const result = await signup({
-      fullName,
+      firstName,
+      lastName,
       email,
-      companyName: companyName || undefined, 
+      phone,
+      address, 
       password,
     });
 
     if (!result.success) {
       setError(result.message || 'Signup failed. Please try again.');
     } else {
-      console.log('Signed up successfully!');
+      window.alert('Signed up successfully!');
       
     }
   };
@@ -112,14 +113,25 @@ export const Signup = ({ onToggle }) => {
               )}
 
               <AuthForm
-                id="full-name"
-                name="full-name"
+                id="first-name"
+                name="first-name"
                 type="text"
-                label="Full Name"
-                placeholder="John Doe"
+                label="First Name"
+                placeholder="John"
                 icon={<UserIcon className="w-5 h-5 text-gray-400" />}
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                required
+              />
+              <AuthForm
+                id="last-name"
+                name="last-name"
+                type="text"
+                label="Last Name"
+                placeholder="Doe"
+                icon={<UserIcon className="w-5 h-5 text-gray-400" />}
+                value={lastName}
+                onChange={(e) => setLastname(e.target.value)}
                 required
               />
               <AuthForm
@@ -134,15 +146,25 @@ export const Signup = ({ onToggle }) => {
                 required
               />
               <AuthForm
-                id="company-name"
-                name="company-name"
+                id="phone-number"
+                name="phone-number"
                 type="text"
-                label="Company Name"
-                placeholder="Your Company Inc."
-                icon={<BuildingIcon className="w-5 h-5 text-gray-400" />}
-                isOptional={true}
-                value={companyName}
-                onChange={(e) => setCompanyName(e.target.value)}
+                label="Phone number"
+                placeholder="+25 1-"
+                icon={<Phone className="w-5 h-5 text-gray-400" />}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+              <AuthForm
+                id="address"
+                name="address"
+                type="text"
+                label="Address"
+                placeholder="Addis Ababa"
+                icon={<Home className="w-5 h-5 text-gray-400" />}
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                required
               />
               <AuthForm
                 id="signup-password"
@@ -153,17 +175,6 @@ export const Signup = ({ onToggle }) => {
                 icon={<LockIcon className="w-5 h-5 text-gray-400" />}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-              <AuthForm
-                id="confirm-password"
-                name="confirm-password"
-                type="password"
-                label="Confirm Password"
-                placeholder="••••••••"
-                icon={<LockIcon className="w-5 h-5 text-gray-400" />}
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import { AdminLayout } from '../layouts/AdminLayout'
 import { Dashboard } from '../pages/admin/Dashboard'
 import { Orders } from '../pages/admin/Orders'
@@ -9,22 +9,8 @@ import { Content } from '../pages/admin/Content'
 import { Analytics } from '../pages/admin/Analytics'
 import { AdminLogin } from '../pages/admin/AdminLogin'
 
-export const AppRoutes = () => {
-  return (
-    <BrowserRouter>
-    <Routes>
-     
-      
-    </Routes>
-    </BrowserRouter>
-  )
-}
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"; 
-
 // === LAYOUTS ===
 import MainLayout from "../layouts/MainLayout";
-import { AdminLayout } from "../layouts/AdminLayout"; 
 
 import {Home} from "../pages/Home";
 import About from "../pages/About";    
@@ -36,19 +22,11 @@ import {Contact} from "../pages/Contact";
 
 import {Login} from "../pages/Login";
 import {Signup} from "../pages/Signup";
-import {AdminLogin} from "../pages/admin/AdminLogin";
-
-import {Dashboard}from "../pages/admin/Dashboard"; 
-import {Orders} from "../pages/admin/Orders";
-import {Users} from "../pages/admin/Users";
-import {Payments} from "../pages/admin/Payments";
 
 import ProtectedRoute from "../components/auth/ProtectedRoute";
-import {AuthSwitch} from "../components/auth/AuthSwitch"; 
-
 export const AppRoutes = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
         
       
@@ -69,21 +47,11 @@ export const AppRoutes = () => {
             element={<ProtectedRoute requiredRole="user"><p>User Profile</p></ProtectedRoute>} 
           />
               
-              // admin layout
+              
         </Route>
-
-      <Route path='/admin' element={<AdminLayout/>}>
-      <Route path='dashboard'element={<Dashboard/>}></Route>
-      <Route path='orders' element={<Orders/>}></Route>
-      <Route path='users' element={<Users/>}></Route>
-      <Route path='payments' element={<Payments/>}></Route>
-      <Route path='contect' element={<Content/>}></Route>
-      <Route path='analytics' element={<Analytics/>}></Route>
-      <Route path='login' element={<AdminLogin/>}></Route>
-      </Route>
-
+// admin layout
        
-        <Route 
+         <Route 
           path="/admin" 
           element={
             <ProtectedRoute requiredRole="admin">
@@ -109,6 +77,6 @@ export const AppRoutes = () => {
         } />
 
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 };

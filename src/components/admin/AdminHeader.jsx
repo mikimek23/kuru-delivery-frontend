@@ -10,7 +10,7 @@ export const AdminHeader = ({ onMobileMenu }) => {
   const notifRef = useRef(null);
   const profileRef = useRef(null);
 
-  // Close on outside click
+  
   useEffect(() => {
     function handleClick(e) {
       if (
@@ -27,8 +27,7 @@ export const AdminHeader = ({ onMobileMenu }) => {
 
   return (
     <header className="sticky top-0 z-30 flex items-center gap-4 px-4 py-3 bg-white shadow-sm border-b lg:ml-16">
-      
-      {/* Mobile menu button */}
+     
       <button
         onClick={onMobileMenu}
         className="md:hidden p-2 rounded-md hover:bg-gray-100"
@@ -42,10 +41,10 @@ export const AdminHeader = ({ onMobileMenu }) => {
 
       <h1 className="text-lg font-semibold">Admin Panel</h1>
 
-      {/* Right side */}
+      
       <div className="ml-auto flex items-center gap-4">
 
-        {/* Notifications */}
+       
         <div className="relative" ref={notifRef}>
           <button
             className="w-10 h-10 hidden md:flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200"
